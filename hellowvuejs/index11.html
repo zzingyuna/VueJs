@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <style>
+  #list {width:400px; border:1px solid black; border-collapse: collapse;}
+  #list td, #list th{border: 1px solid black; text-align: center;}
+  #list > thead  > tr{color:yellow; background-color: purple;}
+  </style>
+</head>
+<body>
+  <div id="example">
+    <table id="list">
+      <thead>
+        <tr>
+          <td>번호</td>
+          <td>이름</td>
+          <td>전화번호</td>
+          <td>주소</td>
+        </tr>
+      </thead>
+      <tbody id="contents">
+        <tr v-for="content in contents">
+          <td>{{content.no}}</td>
+          <td>{{content.name}}</td>
+          <td>{{content.tel}}</td>
+          <td>{{content.addr}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script type="text/javascript">
+      var model = {
+        "pageno":1,
+        "pagesize":10,
+        "totalcount":100,
+        "contents" :[
+          {"no":100, "name":"최윤재","tel":1234, "addr":"쌍문역"},
+          {"no":99, "name":"김윤아","tel":2234, "addr":"공릉역"}
+        ]
+      }
+      var simple = new Vue({
+          el:'#example',
+          data : model
+      })
+
+  </script>
+</body>
+</html>

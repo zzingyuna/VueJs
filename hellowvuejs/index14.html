@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <style>
+  #list {width:400px; border:1px solid black; border-collapse: collapse;}
+  #list td, #list th{border: 1px solid black; text-align: center;}
+  #list > thead  > tr{color:yellow; background-color: purple;}
+  </style>
+</head>
+<body>
+  <div id="example">
+    <table id="list">
+      <thead>
+        <tr>
+          <td>순서</td>
+          <td>번호</td>
+          <td>이름</td>
+          <td>전화번호</td>
+          <td>주소</td>
+        </tr>
+      </thead>
+      <tbody id="contents">
+        <tr v-for="(content, index) in contents" v-if="index % 2 == 0">
+            <td>짝수 : {{index+1}}</td>
+            <td>{{content.no}}</td>
+            <td>{{content.name}}</td>
+            <td>{{content.tel}}</td>
+            <td>{{content.addr}}</td>
+            </tr>
+            <tr v-for="(content, index) in contents" v-if="index % 2 != 0">
+                <td>홀수 : {{index+1}}</td>
+                <td>{{content.no}}</td>
+                <td>{{content.name}}</td>
+                <td>{{content.tel}}</td>
+                <td>{{content.addr}}</td>
+                </tr>
+        <tr v-for="(content, index) in contents" v-if="index > 2">
+          <td>{{index+1}}</td>
+          <td></td>
+          <td>{{content.name}}</td>
+          <td></td>
+          <td>{{content.addr}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script type="text/javascript">
+      var model = {
+        "pageno":1,
+        "pagesize":10,
+        "totalcount":100,
+        "contents" :[
+          {"no":100, "name":"최윤재","tel":1234, "addr":"쌍문역"},
+          {"no":99, "name":"김윤아","tel":2234, "addr":"공릉역"},
+          {"no":98, "name":"김윤환","tel":2334, "addr":"부평구청역"},
+          {"no":97, "name":"김지윤","tel":4334, "addr":"서구청역"}
+        ]
+      }
+      var simple = new Vue({
+          el:'#example',
+          data : model
+      })
+
+  </script>
+</body>
+</html>
